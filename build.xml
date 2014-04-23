@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="ikvm" basedir=".">
+    <description>
+            description
+    </description>
+
+	<taskdef name="ikvmc" classname="net.ikvm.ant.IkvmcTask" classpath="./lib/ant-ikvmc.0.5.jar"/>
+	<property name="ikvm.home" location="D:/myfiles/DotNetLibs/ikvm-0.42.0.3"/>
+    <!-- ================================= 
+          target: ikvm              
+         ================================= -->
+    <target name="ikvm" depends="jar" description="description">
+    	 <ikvmc target="library" out="./build/touchgraph.dll" home="${ikvm.home}" version="1.0.0.0" debug="true"  verbose="true">
+    	   <fileset dir="./build" includes="*.jar">
+    	     
+    	   </fileset>
+    	 </ikvmc>
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: jar                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="jar">
+    	<jar destfile="./build/touchgraph.jar">
+    	        	<fileset dir="./bin"></fileset>
+    	        </jar>
+    </target>
+
+</project>
